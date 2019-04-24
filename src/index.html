@@ -7,8 +7,23 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
   <app-root></app-root>
+  <script src="https://www.gstatic.com/firebasejs/5.10.0/firebase.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyCWjWQwtrYhL0Q-oVxm80ctzCSH2_klhrQ",
+      authDomain: "frontend-test-5802a.firebaseapp.com",
+      databaseURL: "https://frontend-test-5802a.firebaseio.com",
+      projectId: "frontend-test-5802a",
+      storageBucket: "frontend-test-5802a.appspot.com",
+      messagingSenderId: "422381657390"
+    };
+    firebase.initializeApp(config);
+  </script>
 </body>
 </html>
