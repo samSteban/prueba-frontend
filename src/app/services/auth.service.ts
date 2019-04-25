@@ -21,4 +21,8 @@ export class AuthService {
         });
     });
   }
+
+  logout(): Promise<any> {
+    return this.fireAuth.auth.signOut();
+  }
 }
