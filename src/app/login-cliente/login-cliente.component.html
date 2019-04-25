@@ -1,13 +1,72 @@
-<div class="container bg-light h-100">
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span>&nbsp;</span>
+  </mat-toolbar-row>
+  <mat-toolbar-row>
+    <h1>Sistema de Gesti&oacute;n de Clientes</h1>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<div class="container bg-white login-container-h">
   <div class="row">
-    <div class="col-12 col-md-8 col-lg-6 col-xl-4 mx-auto text-center py-5">
-      <h1 class="text-dark mb-5">Sistema de Gesti&oacute;n de Clientes</h1>
-      <div class="card">
-        <div class="card-body">
-          <h5 class="text-muted mb-4">Inicia sesi&oacute;n con tu cuenta de Google para continuar.</h5>
-          <button type="button" class="btn btn-outline-danger" (click)="onClick()">Continuar con Google</button>
-        </div>
-      </div>
+    <div class="col-6 d-none d-md-inline-flex py-5 login-columns">
+      <img src="assets/img/img_client.svg" class="img-fluid w-75 mx-auto">
+    </div>
+    <div class="col-12 col-md-6 col-lg-4 py-5 d-inline-flex login-columns">
+      <mat-card class="example-card my-auto">
+        <mat-card-content>
+          <mat-tab-group class="mx-3" [selectedIndex]="tabSelected" (selectedIndexChange)="tabSelected = $event">
+            <mat-tab label="Ingresa">
+              <form class="my-form pt-3 px-1" [formGroup]="formLogin" (submit)="loginWithEmailAndPassword()">
+                <mat-form-field class="full-width" appearance="outline">
+                  <mat-label>E-mail</mat-label>
+                  <input matInput type="email" placeholder="ejemplo@mail.com" formControlName="email">
+                  <mat-error *ngIf="email.invalid && email.errors['required']">e-mail obligatorio</mat-error>
+                  <mat-error *ngIf="email.invalid && email.errors['email']">e-mail inválido</mat-error>
+                  <mat-icon matSuffix>mail</mat-icon>
+                </mat-form-field>
+                <mat-form-field class="full-width" appearance="outline">
+                  <mat-label>Contrase&ntilde;a</mat-label>
+                  <input matInput placeholder="*******" formControlName="password"
+                         [type]="hideLogin ? 'password' : 'text'">
+                  <mat-error *ngIf="password.invalid && password.errors['required']">contraseña obligatoria</mat-error>
+                  <mat-icon matSuffix (click)="hideLogin = !hideLogin">
+                    {{hideLogin ? 'visibility_off' : 'visibility'}}
+                  </mat-icon>
+                </mat-form-field>
+                <button mat-flat-button type="submit" class="full-width mt-1" color="primary">Ingresar</button>
+              </form>
+            </mat-tab>
+            <mat-tab label="Regístrate">
+              <form class="my-form pt-3 px-1" [formGroup]="formSignup" (submit)="registerWithEmailAndPassword()">
+                <mat-form-field class="full-width" appearance="outline">
+                  <mat-label>E-mail</mat-label>
+                  <input matInput type="email" placeholder="ejemplo@mail.com" formControlName="_email">
+                  <mat-error *ngIf="_email.invalid && _email.errors['required']">e-mail obligatorio</mat-error>
+                  <mat-error *ngIf="_email.invalid && _email.errors['email']">e-mail inválido</mat-error>
+                  <mat-icon matSuffix>mail</mat-icon>
+                </mat-form-field>
+                <mat-form-field class="full-width" appearance="outline">
+                  <mat-label>Contrase&ntilde;a</mat-label>
+                  <input matInput placeholder="*******" formControlName="_password"
+                         [type]="hideRegister ? 'password' : 'text'">
+                  <mat-error *ngIf="_password.invalid && _password.errors['required']">contraseña obligatoria</mat-error>
+                  <mat-icon matSuffix (click)="hideRegister = !hideLogin">
+                    {{hideRegister ? 'visibility_off' : 'visibility'}}
+                  </mat-icon>
+                </mat-form-field>
+                <button mat-flat-button type="submit" class="full-width mt-1" color="primary">Registrar</button>
+              </form>
+            </mat-tab>
+          </mat-tab-group>
+          <p class="my-3 text-center">&oacute;</p>
+          <div class="my-form px-3">
+            <button mat-flat-button type="button" class="full-width" color="warn" (click)="loginWithGoogle()">
+              Continuar con Google
+            </button>
+          </div>
+        </mat-card-content>
+      </mat-card>
     </div>
   </div>
 </div>

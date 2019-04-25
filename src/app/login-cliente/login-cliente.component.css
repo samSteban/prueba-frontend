@@ -1,0 +1,15 @@
+.my-form {
+  width: 100%;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.login-container-h {
+  height: calc(100vh - 128px);
+}
+
+.login-columns {
+  height: calc(100vh - 200px);
+}
