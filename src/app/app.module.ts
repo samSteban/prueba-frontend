@@ -15,15 +15,17 @@ import {AngularFireAuth} from '@angular/fire/auth';
 import {LayoutComponent} from './layout/layout.component';
 import {
   MatButtonModule,
-  MatCardModule,
+  MatCardModule, MatDatepickerModule,
   MatFormFieldModule,
   MatIconModule,
-  MatInputModule,
-  MatSnackBarModule,
+  MatInputModule, MatMenuModule, MatNativeDateModule,
+  MatSnackBarModule, MatTableModule,
   MatTabsModule,
   MatToolbarModule
 } from '@angular/material';
 import {FormBuilder, FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {ClienteService} from './services/cliente.service';
+import {AngularFirestore, FirestoreSettingsToken} from '@angular/fire/firestore';
 
 @NgModule({
   declarations: [
@@ -48,12 +50,19 @@ import {FormBuilder, FormsModule, ReactiveFormsModule} from '@angular/forms';
     MatInputModule,
     MatIconModule,
     MatSnackBarModule,
-    MatTabsModule
+    MatTabsModule,
+    MatMenuModule,
+    MatTableModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [
     AuthService,
     AngularFireAuth,
-    FormBuilder
+    FormBuilder,
+    ClienteService,
+    AngularFirestore,
+    {provide: FirestoreSettingsToken, useValue: {}}
   ],
   bootstrap: [AppComponent]
 })

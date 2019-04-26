@@ -115,7 +115,7 @@ export class LoginClienteComponent implements OnInit {
   loginWithGoogle() {
     this.auth.authentication().then((user) => {
       localStorage.setItem('user', JSON.stringify(user));
-      this.router.navigate(['/principal/register']);
+      this.router.navigate(['/principal/list']);
     });
   }
 

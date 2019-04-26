@@ -4,6 +4,7 @@ import {LoginClienteComponent} from './login-cliente/login-cliente.component';
 import {LayoutComponent} from './layout/layout.component';
 import {CrearClienteComponent} from './crear-cliente/crear-cliente.component';
 import {AuthGuard} from './guards/auth.guard';
+import {ListarClienteComponent} from './listar-cliente/listar-cliente.component';
 
 const routes: Routes = [
   {
@@ -21,12 +22,16 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: 'register',
+        redirectTo: 'list',
         pathMatch: 'full'
       },
       {
         path: 'register',
         component: CrearClienteComponent
+      },
+      {
+        path: 'list',
+        component: ListarClienteComponent
       }
     ],
     canActivate: [AuthGuard]
